@@ -1,7 +1,6 @@
 import numpy as np
-a = np.array([[2, 2],[2, 3],[2, 2]])
-b = np.array([[5, 3, 4],[2, 3, 5]])
-c = np.ndarray([[1, 2, 3]])
+
+a, b = np.ndarray()
 
 def dot(a, b):
     out = np.zeros((a.shape[0],b.shape[1]))
@@ -12,9 +11,6 @@ def dot(a, b):
         return out
     else:
         print("Wrong shapes")
+        return out
 
-#print(dot(a,b))
-
-#print(np.dot(a,b))
-
-print(c.shape)
+out = dot(a, b)
