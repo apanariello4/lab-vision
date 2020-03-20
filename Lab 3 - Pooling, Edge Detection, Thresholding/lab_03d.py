@@ -27,10 +27,10 @@ arr = np.arange(256)
 thresh = -1
 fn_min = np.inf
 
-for t in range(1,255):
+for t in range(255):
     p1,p2 = np.hsplit(hist,[t+1]) #prob
 
-    w_1 = hist_cumsum[t+1]
+    w_1 = hist_cumsum[t]
     w_2 = hist_cumsum[255]-hist_cumsum[t+1]
     if w_1 < 1.e-6 or w_2 < 1.e-6:
         continue
