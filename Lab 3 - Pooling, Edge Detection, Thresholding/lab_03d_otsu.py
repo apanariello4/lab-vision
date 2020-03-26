@@ -50,7 +50,6 @@ ret2,th2 = cv2.threshold(im,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)#with cv2
 
 out = (im>thresh).astype(np.uint8)*255 #img with otsu thresh
 
-
 #comparing manual otsu with cv2 otsu
 plt.subplot(121),plt.imshow(out,cmap = 'gray')
 plt.title(f'Manual {thresh}'), plt.xticks([]), plt.yticks([])
