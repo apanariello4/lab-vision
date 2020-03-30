@@ -37,10 +37,10 @@ dst = cv2.warpPerspective(im_b, M, (width,height))
 
 mask = np.all(dst == [0, 0, 0], axis=-1, keepdims=True) #(286, 509)
 
-#dst[mask] = im_a[mask]
-out = cv2.add(dst,im_a,mask=np.floatmask)
+dst[mask] = im_a[mask]
+#out = cv2.add(dst,im_a,mask=np.floatmask)
 
-plt.imshow(out)
+plt.imshow(dst)
 plt.show()
 
 
