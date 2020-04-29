@@ -46,10 +46,9 @@ def roi_pooling(input, boxes, output_size):
 
     # for each batch
     for bb in range(n):
-
         boxes[bb] = np.round(boxes[bb].numpy())
-
-        y1, x1, y2, x2 = boxes[bb][:, 0], boxes[bb][:, 1], boxes[bb][:, 2], boxes[bb][:, 3]
+        y1, x1, y2, x2 = boxes[bb][:, 0], boxes[bb][:,
+                                                    1], boxes[bb][:, 2], boxes[bb][:, 3]
 
         for i in range(oH):
             hstart = np.floor(y1+i*(y2-y1+1)/oH)
@@ -57,11 +56,10 @@ def roi_pooling(input, boxes, output_size):
 
             for j in range(oW):
                 wstart = np.floor(x1+j*(x2-x1+1)/oW)
-                wend = np.ceil(x1 + (j+1)*(x2-x1+1)/oW)
+                wend = np.ceil(x1+(j+1)*(x2-x1+1)/oW)
 
                 # for each bb in the batch
                 for l in range(L):
-
                     hstartl, hendl = int(hstart[l]), int(hend[l])
                     wstartl, wendl = int(wstart[l]), int(wend[l])
 
@@ -69,6 +67,7 @@ def roi_pooling(input, boxes, output_size):
                         torch.max(input[bb, :, hstartl:hendl, wstartl:wendl], 1)[0], 1)[0]
 
     return output
+
 
 out = roi_pooling(input, boxes, output_size)
 
